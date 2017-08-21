@@ -11,7 +11,7 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -r linux-x64 -o out
 
-EXPOSE 5000
+EXPOSE 80
 
 # build runtime image
 FROM microsoft/dotnet:2.0-runtime-deps
