@@ -30,4 +30,10 @@
   <ItemGroup>
     <PackageReference Include="ILLink.Tasks" Version="0.1.4-preview-906439" />
   </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0" />
+  </ItemGroup>
 </Project>
