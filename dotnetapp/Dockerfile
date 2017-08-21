@@ -1,5 +1,5 @@
 
-FROM microsoft/aspnetcore-build AS build-env
+FROM microsoft/dotnet:2.0-sdk AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -14,7 +14,7 @@ RUN dotnet publish -c Release -r linux-x64 -o out
 EXPOSE 80
 
 # build runtime image
-FROM microsoft/aspnetcore
+FROM microsoft/dotnet:2.0-runtime-deps
 WORKDIR /app
 COPY --from=build-env /app/out ./
 ENTRYPOINT ["./dotnetapp"]
