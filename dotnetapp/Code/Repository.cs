@@ -30,6 +30,7 @@ namespace dotnetapp.Code
         public void AddUser(User user)
         {
             model.Users.Add(user);
+            model.SaveChanges();
         }
 
         public void AddVisit(Visit visit)
@@ -46,7 +47,9 @@ namespace dotnetapp.Code
 
         public void UpdateUser(int id, User user)
         {
-            //Users[user.Id] = user;
+            user.Id = id;
+            model.Users.Update(user);
+            model.SaveChanges();
         }
 
         public void UpdateVisit(int id, Visit visit)
