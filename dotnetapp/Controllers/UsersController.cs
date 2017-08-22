@@ -10,9 +10,10 @@ namespace dotnetapp.Controllers
 {
     public class UsersController : Controller
     {
-        IRepository repository; 
+        IRepository repository;
 
-        public UsersController(IRepository repository){
+        public UsersController(IRepository repository)
+        {
             this.repository = repository;
         }
 
@@ -25,9 +26,11 @@ namespace dotnetapp.Controllers
 
         [HttpPost]
         [Route("users/{id}")]
-        public void Post(int id, [FromBody]User value)
+        public void Post(int id, [FromBody]Dictionary<string, object> value)
         {
-            repository.UpdateUser(id, value);
+            var user = repository.GetUser(id);
+            user.Merge(value);
+            repository.UpdateUser(id, user);
         }
 
         [HttpPost]

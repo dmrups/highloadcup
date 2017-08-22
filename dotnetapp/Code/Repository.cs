@@ -44,17 +44,17 @@ namespace dotnetapp.Code
 
         // Update
 
-        public void UpdateUser(User user)
+        public void UpdateUser(int id, User user)
         {
             //Users[user.Id] = user;
         }
 
-        public void UpdateVisit(Visit visit)
+        public void UpdateVisit(int id, Visit visit)
         {
             //Visits[visit.Id] = visit;
         }
 
-        public void UpdateLocation(Location location)
+        public void UpdateLocation(int id, Location location)
         {
             //Locations[location.Id] = location;
         }
