@@ -14,6 +14,8 @@ namespace dotnetapp
 {
     public class Startup
     {
+        IRepository repository;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,7 +27,8 @@ namespace dotnetapp
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddDbContext<Entities.Model>();
-            services.AddSingleton<IRepository, Repository>();
+            repository = new Repository();
+            services.AddSingleton(typeof(IRepository), repository);
             services.AddMvc();
         }
 
@@ -38,6 +41,9 @@ namespace dotnetapp
             }
 
             app.UseMvc();
+
+            var loader = new Loader(repository);
+            loader.LoadData("/tmp/data/data.zip");
         }
     }
 }

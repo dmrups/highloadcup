@@ -8,33 +8,32 @@ using dotnetapp.Code;
 
 namespace dotnetapp.Controllers
 {
-    public class UsersController : Controller
+    public class LocationsController : Controller
     {
         IRepository repository;
 
-        public UsersController(IRepository repository)
+        public LocationsController(IRepository repository)
         {
             this.repository = repository;
         }
 
         [HttpGet]
-        [Route("users/{id}")]
+        [Route("locations/{id}")]
         public object Get(int id)
         {
-            return repository.GetUser(id);
+            return repository.GetLocation(id);
         }
 
         [HttpPost]
-        [Route("users/{id}")]
-        public void Post(int id, [FromBody]Dictionary<string, object> value)
+        [Route("locations/{id}")]
+        public void Post(int id, [FromBody]Location value)
         {
-            var user = repository.GetUser(id);
-            user.Merge(value);
-            repository.UpdateUser(user);
+            value.id = id;
+            repository.UpdateLocation(value);
         }
 
         [HttpPost]
-        [Route("users/new")]
+        [Route("locations/new")]
         public void PostNew([FromBody]User value)
         {
             repository.AddUser(value);

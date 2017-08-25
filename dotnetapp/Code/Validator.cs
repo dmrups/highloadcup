@@ -6,6 +6,7 @@ namespace dotnetapp.Code
     {
         public bool NullValidation(IDictionary<string, object> input)
         {
+            return true;
             var result = false;
             foreach (var obj in input.Values)
             {

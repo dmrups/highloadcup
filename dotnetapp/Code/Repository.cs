@@ -33,33 +33,51 @@ namespace dotnetapp.Code
             model.SaveChanges();
         }
 
+        public void AddUsers(IEnumerable<User> users){
+            model.AddRange(users);
+            model.SaveChanges();
+        }
+
         public void AddVisit(Visit visit)
         {
-            //Visits.Add(visit.Id, visit);
+            model.Visits.Add(visit);
+            model.SaveChanges();
+        }
+
+        public void AddVisits(IEnumerable<Visit> visits){
+            model.Visits.AddRange(visits);
+            model.SaveChanges();
         }
 
         public void AddLocation(Location location)
         {
-            //Locations.Add(location.Id, location);
+            model.Locations.Add(location);
+            model.SaveChanges();
+        }
+
+        public void AddLocations(IEnumerable<Location> locations){
+            model.Locations.AddRange(locations);
+            model.SaveChanges();
         }
 
         // Update
 
-        public void UpdateUser(int id, User user)
+        public void UpdateUser(User user)
         {
-            user.Id = id;
             model.Users.Update(user);
             model.SaveChanges();
         }
 
-        public void UpdateVisit(int id, Visit visit)
+        public void UpdateVisit(Visit visit)
         {
-            //Visits[visit.Id] = visit;
+            model.Visits.Update(visit);
+            model.SaveChanges();
         }
 
-        public void UpdateLocation(int id, Location location)
+        public void UpdateLocation(Location location)
         {
-            //Locations[location.Id] = location;
+            model.Locations.Update(location);
+            model.SaveChanges();
         }
 
         // Get
